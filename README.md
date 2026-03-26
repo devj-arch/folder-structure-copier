@@ -6,7 +6,8 @@ Copy any folder's structure as a clean ASCII tree — ready to paste into AI pro
 
 Right-click any folder in the Explorer panel and choose **Copy Folder Structure**:
 
-<img alt="Context menu showing Copy Folder Structure submenu" src="https://github.com/user-attachments/assets/0a2f1142-4da4-4743-a8fc-71fc2fb63354" />
+<img alt="Context menu showing Copy Folder Structure submenu" src="https://github.com/user-attachments/assets/1ac37183-eff4-4d03-ac39-7b68ef7ab89c" />
+
 
 ### Three copy modes
 
