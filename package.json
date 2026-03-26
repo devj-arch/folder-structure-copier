@@ -1,0 +1,126 @@
+{
+  "name": "folder-structure-copier",
+  "displayName": "Folder Structure Copier",
+  "description": "Copy folder structures as formatted ASCII trees — perfect for AI prompts, docs, and READMEs",
+  "version": "1.0.0",
+  "publisher": "devj-arch",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devj-arch/folder-structure-copier"
+  },
+  "bugs": {
+    "url": "https://github.com/devj-arch/folder-structure-copier/issues"
+  },
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["folder", "structure", "tree", "copy", "prompt", "AI", "ascii", "directory"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "folderStructureCopier.copyFullStructure",
+        "title": "Copy Full Structure (All Depths)",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "folderStructureCopier.copyShallowStructure",
+        "title": "Copy Shallow Structure (Immediate Children)",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "folderStructureCopier.copySelectiveStructure",
+        "title": "Copy Structure (Selective Depth)…",
+        "icon": "$(list-tree)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "folderStructureCopier.submenu",
+          "when": "explorerResourceIsFolder",
+          "group": "5_cutcopypaste@10"
+        }
+      ],
+      "folderStructureCopier.submenu": [
+        {
+          "command": "folderStructureCopier.copyFullStructure",
+          "group": "1_structure@1"
+        },
+        {
+          "command": "folderStructureCopier.copyShallowStructure",
+          "group": "1_structure@2"
+        },
+        {
+          "command": "folderStructureCopier.copySelectiveStructure",
+          "group": "1_structure@3"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "folderStructureCopier.submenu",
+        "label": "Copy Folder Structure"
+      }
+    ],
+    "configuration": {
+      "title": "Folder Structure Copier",
+      "properties": {
+        "folderStructureCopier.excludePatterns": {
+          "type": "array",
+          "default": [
+            "node_modules",
+            ".git",
+            ".DS_Store",
+            "dist",
+            "out",
+            "build",
+            ".next",
+            "__pycache__",
+            ".venv",
+            "venv",
+            "*.pyc"
+          ],
+          "description": "Glob patterns for files/folders to exclude from the structure"
+        },
+        "folderStructureCopier.includeRootFolderName": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include the root folder name in the copied structure"
+        },
+        "folderStructureCopier.showFileIcons": {
+          "type": "boolean",
+          "default": false,
+          "description": "Prefix files and folders with emoji icons"
+        },
+        "folderStructureCopier.sortFoldersFirst": {
+          "type": "boolean",
+          "default": true,
+          "description": "List folders before files at each level"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "^18.0.0",
+    "@types/minimatch": "^5.1.2",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "minimatch": "^9.0.0"
+  }
+}
